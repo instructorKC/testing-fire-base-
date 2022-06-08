@@ -2,10 +2,19 @@
 
 
 ## back end as a service
+### PROS
 * generous free tier for authentication and database
 * straight forward setup for authentication and database
 * ALL database and authentication interactions can be done on front end with react or plain js
 * continious deployment via github
+### CONS (they mostly only matters for production and business)
+* It has vendor lock-in
+* It runs entirely on Google Cloud
+* Only offers NoSQL databases
+* Doesn’t offer GraphQL APIs as part of the standard setup
+* It’s a subdomain from Google so it doesn’t work in many countries
+* Serverless Not free (very low cost 2 cents per gigabyte)
+
 ## authenticatoin
 * many options for authentication setup from basic email and password (also passwordless emai link) to third party accounts google facebook ect
 ## database
