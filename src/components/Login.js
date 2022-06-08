@@ -1,4 +1,4 @@
-import React, { useState  } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { auth } from '../firebase-config';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth'
 
@@ -49,13 +49,15 @@ function Login() {
   // Takes time a few seconds to get user credentials from firebase
   // Make it so user credentials are displayed on state change
   // use this onAuthChange to look for current user then put it in state
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  useEffect(()=> {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  }, [])
  // { user?.email }
 // {auth.currentUser?.email ? auth.currentUser.email : 'none'}
   return (
-    <div style={{ marginTop: "700px",marginBottom: "600px"}}>
+    <div style={{ marginBottom: "300px"}}>
       <div>
         <h3> Register User </h3>
         <input
