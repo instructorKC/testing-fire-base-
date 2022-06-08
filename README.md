@@ -5,6 +5,7 @@
 generous free tier for authentication and database
 straight forward setup for authentication and database
 ALL database and authentication interactions can be done on front end with react or plain js
+continious deployment via github
 ## authenticatoin
 many options for authentication setup from basic email and password (also passwordless emai link) to third party accounts google facebook ect
 ## database
