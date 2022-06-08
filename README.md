@@ -15,7 +15,6 @@ easy to learn with programming background just need to read documentation on int
 all crud opperations possible
 
 
-test@gmail.com 123456
 
 ## need?
 .env lesson/pre-class?
