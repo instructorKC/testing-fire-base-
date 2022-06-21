@@ -1,6 +1,6 @@
 
 import './App.css';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {db} from './firebase-config'
 import { collection, getDocs, addDoc,updateDoc, deleteDoc, doc} from '@firebase/firestore'
 import Login from './components/Login';
@@ -9,11 +9,16 @@ function App() {
   const [students, setStudents] = useState([]);
  
   const studentsCollectionRef = collection(db, 'more');
+  const getStudents = useCallback(async () => {
+    const data = await getDocs(studentsCollectionRef);
+    setStudents(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+  
+  }, [studentsCollectionRef]);
 
   useEffect(()=> {
 
     getStudents();
-  }, [])
+  }, [getStudents])
 
  const updateuser = async (id, age) => {
    const studentDoc = doc(db, 'more', id)
@@ -26,11 +31,7 @@ function App() {
   await deleteDoc(studentDoc );
   getStudents();
 }
-const getStudents = async () => {
-  const data = await getDocs(studentsCollectionRef);
-  //console.log(data.docs);
-  setStudents(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-}
+
   return (
 
     <div className="App" style={{marginBottom: "600px"}}>
