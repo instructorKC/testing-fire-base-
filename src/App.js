@@ -7,8 +7,8 @@ import Login from './components/Login';
 function App() {
 
   const [students, setStudents] = useState([]);
-
-  const studentsCollectionRef = collection(db, 'students');
+ 
+  const studentsCollectionRef = collection(db, 'more');
 
   useEffect(()=> {
 
@@ -16,13 +16,13 @@ function App() {
   }, [])
 
  const updateuser = async (id, age) => {
-   const studentDoc = doc(db, 'students', id)
+   const studentDoc = doc(db, 'more', id)
   const newFields = {age: age+1};
   await updateDoc(studentDoc ,newFields);
   getStudents();
  }
  const deleteStudent = async (id) => {
-  const studentDoc = doc(db, 'students', id)
+  const studentDoc = doc(db, 'more', id)
   await deleteDoc(studentDoc );
   getStudents();
 }
